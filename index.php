@@ -30,8 +30,9 @@ $dcp_project = file_get_html($get_project);
 $project_count = 1;
 foreach($dcp_project->find('.txtNew a') as $el) {
     if($el->plaintext != null && $el->href != 'https://tyrantfs.wixsite.com/tyrantfs/projects') {
-        $domain.$project_count = $el->href;
-        $title = file_get_html($domain.$project_count);
+        $domain = 'domain'.$project_count;
+        $get_url = $el->href;
+        $title = file_get_html($get_url);
     ?>
         <h3 class="title is-3"><?php echo $el->plaintext; ?></h3>
         <div class="table-container">
