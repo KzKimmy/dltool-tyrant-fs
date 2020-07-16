@@ -29,7 +29,7 @@ $get_project = 'https://tyrantfs.wixsite.com/tyrantfs/projects';
 $dcp_project = file_get_html($get_project);
 $project_count = 1;
 foreach($dcp_project->find('.txtNew a') as $el) {
-    if($el->plaintext != null && $el->href != 'https://tyrantfs.wixsite.com/tyrantfs/projects') {
+    if($el->plaintext != null && ($el->href != 'https://tyrantfs.wixsite.com/tyrantfs/projects' and $el->href != '')) {
         $domain = 'domain'.$project_count;
         $get_url = $el->href;
         $title = file_get_html($get_url);
@@ -39,17 +39,17 @@ foreach($dcp_project->find('.txtNew a') as $el) {
             <table class="table is-hoverable">
                 <tbody>
                     <?php
-                    $ep = 1;
+                    $order = 1;
                         foreach($title->find('.txtNew a') as $el) {
-                        if($el->plaintext != null or ($el->plaintext == 'DL' or $el->plaintext == 'MEGA' )) { ?>
+                        if($el->plaintext != null and $el->plaintext != 'BACK') { ?>
                     <tr>
-                        <td>Episode <?php echo $ep; ?></td>
+                        <td># <?php echo $order; ?></td>
                         <td>
-                            <a href="<?php echo $el->href; ?>" target="_blank"><?php echo $el->href; ?></a>
+                            <a href="<?php echo $el->href; ?>" target="_blank"><?php echo $el->plaintext . " : " . $el->href; ?></a>
                         </td>
                     </tr>
                     <?php
-                        $ep++;
+                        $order++;
                         }
                     }?>
                 </tbody>
