@@ -41,7 +41,7 @@ foreach($dcp_project->find('.txtNew a') as $el) {
                     <?php
                     $order = 1;
                         foreach($title->find('.txtNew a') as $el) {
-                        if($el->plaintext != null and $el->plaintext != 'BACK') { ?>
+                        if($el->plaintext != null and ($el->plaintext != 'BACK' or $el->plaintext != 'Back')) { ?>
                     <tr>
                         <td># <?php echo $order; ?></td>
                         <td>
