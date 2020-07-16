@@ -1,2 +1,2 @@
-# dltool-tyrant-fs.github.io
- Download Anime from Tyrant Fansub
+# dltool-tyrant-fs
+ Download Anime Subthai from Tyrant Fansub
